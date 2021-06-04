@@ -1,400 +1,239 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-    <head> 
-        <meta charset="UTF-8"> 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>Cindy-Mastermind</title>         
-        <link rel="stylesheet" href="Cindy-Mastermind.css"> 
-    </head>     
-    <body> 
-        <!--The whole web page-->         
-        <div class="content"> 
-            <!--Title/heading-->             
-            <div class="heading">Play Mastermind Online!</div>             
-            <!--Games Rules dropdown-->             
-            <div class="dropdown"> 
-                <!--Dropdown button-->                 
-                <button class="dropbtn">Game Rules</button>                 
-                <!--Dropdown content-->                 
-                <div class="dropdown-content"> 
-                    <a>  <p3>Object of the Game</p3><br>  <p>To outsmart the computer with great guesswork.</p>  <p3>Your Goal</p3><br>  <p> 
-                    As the Decoder: you must break the secret code in the fewest number of guesses.<br>  </p>  <p3>Game Play</p3><br>  <ol> 
-                            <li>1. Click on 
-                                <span>&nbsp Start New Game &nbsp</span>.
-                            </li>                             
-                            <li>2. Begin guessing, try to duplicate the exact colors and positions of the hidden Code pegs.
-                                <br> Note: there are no duplicate colors.
-                            </li>                             
-                            <li>3. Each guess is made by clicking a peg in the selection area, then clicking an empty spot in the guess row.</li>                             
-                            <li>4. After every guess, the computer will inform you of your progress through the little dots on the right.</li>                             
-                        </ol>  <p3>Red Dots</p3>  <div class="redDot"></div>  <p>The red dots shows the number of pegs that are the correct colors in the correct positions.</p>  <p3>White Dots</p3>  <div class="whiteDot"></div>  <p>White dots show the number of pegs that are the correct colors but in incorrect positions.</p>  <p3>Example</p3><br>  <img src="Example.png" class="exampleGamePlay" style="float: left; margin-right: 10px"><br>  <p>In this case the player has 1 peg that is the correct colors in the correct position and 2 pegs that are the same color but in incorrect positions. Therefore there are 1 red dots and 2 white dots.</p><br><br><br><br>  <p3>End of the Game</p3><br>  <p> 
-                    ⇨If the Decoder breaks the secret code before all the guess rows are used, 4 red dots are shown. The hidden code is revealed. The Decoder wins the game😃<br> 
-                    ⇨If the Decoder has used up all the guess rows and have not broke the secret code, the hidden code is revealed. The Decoder loses the game😞 </p>  </a> 
-                </div>                 
-            </div>             
-            <!--The box that surrounds the game box-->             
-            <div class="box"> 
-                <!--The game box-->                 
-                <div class="game-box"> 
-                    <!--Answers at the top-->                     
-                    <div class="game-top"> 
-                        <ul class="answer"> 
-                            <li>?</li>                             
-                            <li>?</li>                             
-                            <li>?</li>                             
-                            <li>?</li>                             
-                        </ul>                         
-                    </div>                     
-                    <!--The main body of the game-->                     
-                    <div class="game-main"> 
-                        <div class="first9Rows"> 
-                            <!--1st guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--2nd guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--3rd guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--4th guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--5th guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--6th guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--7th guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--8th guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--9th guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--Box that contains the 4 guess spots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--10th guess row (from the top)-->                             
-                            <div class="term"> 
-                                <!--The big guess dots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                            <!--11th guess row (from the top)-->                             
-                            <div class="term" id="Row9"> 
-                                <!--The big guess dots-->                                 
-                                <ul class="termLeft"> 
-                                    <!--4 guess spots-->                                     
-                                    <li onclick="onSetBallColor(this,0)"></li>                                     
-                                    <li onclick="onSetBallColor(this,1)"></li>                                     
-                                    <li onclick="onSetBallColor(this,2)"></li>                                     
-                                    <li onclick="onSetBallColor(this,3)"></li>                                     
-                                </ul>                                 
-                                <!--Box that contains the 4 check dots and the "check" button-->                                 
-                                <div class="termRight"> 
-                                    <!--4 check dots-->                                     
-                                    <ul class="tips"> 
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                        <li class="check-dot"></li>                                         
-                                    </ul>                                     
-                                    <!--The "check" button-->                                     
-                                    <div onclick="onCheckClick()" class="termBtn"> 
-                                        Check
-</div>                                     
-                                </div>                                 
-                            </div>                             
-                        </div>                         
-                        <!--12th guess row (from the top)-->                         
-                        <div class="term"> 
-                            <!--The big guess dots-->                             
-                            <ul class="termLeft"> 
-                                <!--4 guess spots-->                                 
-                                <li onclick="onSetBallColor(this,0)"></li>                                 
-                                <li onclick="onSetBallColor(this,1)"></li>                                 
-                                <li onclick="onSetBallColor(this,2)"></li>                                 
-                                <li onclick="onSetBallColor(this,3)"></li>                                 
-                            </ul>                             
-                            <!--Box that contains the 4 check dots and the "check" button-->                             
-                            <div class="termRight"> 
-                                <!--4 check dots-->                                 
-                                <ul class="tips"> 
-                                    <li class="check-dot"></li>                                     
-                                    <li class="check-dot"></li>                                     
-                                    <li style="width:100%; height:4px; background-color:#AD7363; border-radius: 0;"></li>                                     
-                                    <li class="check-dot"></li>                                     
-                                    <li class="check-dot"></li>                                     
-                                </ul>                                 
-                                <!--The "check" button-->                                 
-                                <div onclick="onCheckClick()" class="termBtn"> 
-                                    Check 
-</div>                                 
-                            </div>                             
-                        </div>                         
-                    </div>                     
-                    <!--The box for the colors-->                     
-                    <div class="colorBall-box"> 
-                        <!--Individual section for each color-->                         
-                        <ul class="ball"> 
-                            <!--The 8 colors-->                             
-                            <li class="red" onclick="onClickBall('red')"></li>                             
-                            <li class="green" onclick="onClickBall('green')"></li>                             
-                            <li class="blue" onclick="onClickBall('blue')"></li>                             
-                            <li class="yellow" onclick="onClickBall('yellow')"></li>                             
-                            <li class="skyblue" onclick="onClickBall('skyblue')"></li>                             
-                            <li class="orange" onclick="onClickBall('orange')"></li>                             
-                            <li class="black" onclick="onClickBall('black')"></li>                             
-                            <li class="white" onclick="onClickBall('white')"></li>                             
-                        </ul>                         
-                    </div>                     
-                    <!--The box for the "Start New Game" button-->                     
-                    <div class="operation-box"> 
-                        <!--The "Start New Game" button-->                         
-                        <button class="btn" onClick="window.location.reload();">Start New Game</button>                         
-                    </div>                     
-                    <!--The message beside the color box-->                     
-                    <div class="note"> 
-                        There are 
+//Create variable for the guess spots
+let nodeList = getNodeList(); //Notes: A NodeList object is a list of nodes extracted from a document
+//Create variable including all the the "check" buttons
+let checkList = getCheckList();
+//Create variable for the check dots beside each line
+let checkDots = getCheckDots();
+//Create variable for tracking the current selected color
+let currentCheckedColor = '';
+//Create variable for the current row number
+let currentRowNum = 11;
+//Create an array for tracking the colors in the answers
+let resultColors = [];
+//Create an array for tracking the guessed colors
+let guessColors = [];
+//Create variable for the answer DOM at the top
+let answerDom = getAnswerDom();
 
-                        <u><b>NO</b></u>
-                        <br>duplicating colors
-                        <br>in each row!
-                    </div>                     
-                </div>                 
-            </div>             
-        </div>         
-        <!--Javascript link-->         
-        <script src="Cindy-Mastermind.js"></script>         
-    </body>     
-</html>
+function onClickBall(color) {
+    //Copy the color of the clicked ball into the variable currentCheckedColor
+    currentCheckedColor = color;
+}
+
+//Paste the color selected into an empty spot
+function onSetBallColor(e,index) {
+    console.log(e);
+    //If the a color is copied into currentCheckedColor and e is enabled
+    if (currentCheckedColor && e.disabled === false) { //Notes: === is the strict equality operator checks whether its two operands are equal, operands of different types are different.
+        //The currently selected color will be pasted into the background color of the empty spot
+        e.style.backgroundColor = currentCheckedColor;
+        //Set guessColors to the color corresponding to the index 
+        guessColors[index] = currentCheckedColor;
+    }
+}
+
+//The function for "check" buttons
+function onCheckClick() {
+    //Decide whether 4 colors has been selected, and whether the length of the array is equal to 4
+    if (guessColors.length === 4) {
+        //Store the 4 check dots in the current row into the variable currentRowCheckDotsDom
+        let currentRowCheckDotsDom = checkDots[currentRowNum];
+        //Filter the number of guess colors that are included with result colors and store them in whiteCheckDotNum 
+        //Notes: The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+        //Notes: The includes() method determines whether an array includes a certain value, returning true or false.
+        let whiteCheckDotNum = guessColors.filter(guessColor => resultColors.includes(guessColor)).length; 
+        //Set the number of red check dots to 0
+        let redCheckDotNum = 0;
+        //Create a duplicate for redCheckDotNum for furture use, set it's value also to 0
+        let redCheckDotNumClone = 0;
+        //If the number of white dots is greater than 0, then check how many of these white dots are in the right position
+        if (whiteCheckDotNum > 0) {
+            //Filter the number of colors that match the colors in the result
+            redCheckDotNum = guessColors.filter((guessColor, index) => (console.log(guessColor,resultColors[index]),guessColor === resultColors[index])).length; 
+            //Paste the value in redCheckDotNum to its duplicate
+            redCheckDotNumClone = redCheckDotNum;
+        }
+        //The number of white dots can be determined by subtracting the number of red dots from the total number of white dots
+        whiteCheckDotNum = whiteCheckDotNum - redCheckDotNum; 
+        //For each element in the array currentRowCheckDotsDom
+        currentRowCheckDotsDom.forEach(currentRowCheckDotDom => { //Notes: The forEach() method executes a provided function once for each array element
+            //If the number of red check dots is greater then 0
+            if (redCheckDotNum > 0) {
+                //Change the background color of these dots to red
+                currentRowCheckDotDom.style.backgroundColor = 'red';
+                //The number of red dot decreases by 1
+                redCheckDotNum--;
+                //End the if statement
+                return; //Notes: The return statement ends function execution and specifies a value to be returned to the function caller
+            }
+            //If the number of white check dots is greater then 0
+            if (whiteCheckDotNum > 0) {
+                //Change the background color of these dots to white
+                currentRowCheckDotDom.style.backgroundColor = 'white';
+                //The number of white dot decreases by 1
+                whiteCheckDotNum--;
+                //End the if statement
+                return;
+            }
+            //Clear the array redCheckDotNum
+            redCheckDotNum=[]; 
+            //Clear the array whiteCheckDotNum
+            whiteCheckDotNum=[]; 
+        })
+        
+        //If all 4 dots turn red and they match the same color and the same spot
+        if (redCheckDotNumClone === 4) {
+            //Display the correct answer at the top
+            showAnswer();
+            setTimeout(() => {
+                //Display alert that the player has won
+                alert('You win!');
+            }, 0); //Notes: 0 is time (seconds)
+            //End the if statement
+            return;
+        }
+        //If the current row number is greater than 0
+        if (currentRowNum > 0) {
+            //Move the current row number up by 1
+            currentRowNum--;
+            //Display the corresponding "check" botton on that line
+            setCheckDisplay(); 
+            //The current row is activated and the other rows are disabled
+            setCheckRow();
+        } else {
+            //If all guesses have been used up, the answer is shown
+            showAnswer();
+            setTimeout(() => {
+                //Display alert that the player has lost
+                alert('You lose!');
+            }, 0);
+        }
+        //Clear the array guessColors
+        guessColors=[]; 
+
+    } else {
+        //Show alert that tells player the row is not complete
+        alert('Row is not complete!');
+    }
+} 
+
+function getNodeList() {
+    //Put all the elements in termLeft into the array termList
+    let termList = [...document.querySelectorAll('.termLeft')]; //Notes: querySelectorAll() returns a static NodeList representing a list of the document's elements that match the specified group of selectors
+    return termList.map(list => { //Notes: list => represents function(list)
+        //Notes: map() creates a new array with the results of calling a function on every element in the array.
+        //Select all the spots 
+        return [...list.querySelectorAll('li')];
+    })
+}
+
+function getCheckList() {
+    //Put all the elements in termBtn into an array 
+    return [...document.querySelectorAll('.termBtn')];
+}
+
+function getCheckDots() {
+    //Put all the elements in tips into the array checkDotsList
+    let checkDotsList = [...document.querySelectorAll('.tips')];
+    return checkDotsList.map(list => {
+        //Put all elements in check-dot into an array 
+        return [...list.querySelectorAll('.check-dot')];
+    })
+}
+
+function getAnswerDom() {
+    //Put the answers from the "?" section into the array 
+    return [...document.querySelector('.answer').querySelectorAll('li')]; //Notes: querySelector() returns the first Element within the document that matches the specified selector
+}
+
+//Initiate the initNode function
+function initNode() {
+    //For every row in nodeList
+    nodeList.forEach(row => row.forEach(item => {
+        //Set the background color of each item to dark brown
+        item.style.backgroundColor = '#422821';
+        //Enable all items
+        item.disabled = false;
+    }))
+}
+
+//Displaying/hiding the "check" buttons 
+function setCheckDisplay() {
+    //For each element in checkList, there are 2 parameters: "check" button ad its index
+    checkList.forEach((check, index) => { //Notes: check the the index of the check button [0,1,2,3...]
+        //If the current row number is matched with the index number
+        if (index === currentRowNum) {
+            //Show the "check" button
+            check.style.display = 'block';
+        } else {
+            //If they do not match, hide the "check" button
+            check.style.display = 'none';
+        }
+    })
+}
+
+function setCheckRow() {
+    //Walk through all the elements in the nodeList
+    nodeList.forEach((row, index) => {
+        //If the index is not the same row as the current row
+        if (index !== currentRowNum) {
+            //Disable items from this row
+            row.forEach(item => { item.disabled = true });
+        } else {
+            //If they do match, enable items from this row
+            row.forEach(item => { item.disabled = false });
+        }
+    })
+}
+
+function createResultColors(params) {
+    //Put the 8 selection colors in the array called totalColor
+    let totalColor = ['red', 'green', 'blue', 'yellow', 'skyblue', 'orange', 'black', 'white'];
+    //Put the coloring results in the array called result
+    let result = [];
+    //Randomly choose 4 colors
+    while (result.length < 4) {
+        //Add up by whole numbers
+        //Randomly produce an integer less than 8, set this number as index
+        let index = Math.floor(Math.random() * 8);
+        //If the result does not already have this number
+        if (!result.includes(index)) {
+            //Push this number in to the array
+            result.push(index); //Notes: The push() method adds new items to the end of an array, and changes the length of the array to the new one
+        }
+    }
+    
+    //"val" contains the indices of the 4 randomely choosen colors
+    result.forEach((val, index) => {
+        //Correspond the indices to the color it corresponds with at the top, therefore the "?" will have received the 4 randomized colors
+        resultColors[index] = totalColor[val];
+    })
+    // resultColors = ['red','black','orange','skyblue']
+}
+
+//Display answers
+function showAnswer(params) {
+    answerDom.forEach((item, index) => {
+        //Change the background color of the items to the color corresponding to the index
+        item.style.backgroundColor = resultColors[index];
+        item.innerText = '';
+    })
+}
+
+
+//Start the game
+function start() {
+    //Initialize nodes
+    initNode();
+    //Set the display for "check" buttons
+    setCheckDisplay();
+    //Set the row that is currently enabled
+    setCheckRow();
+    //Initialize the randomized color picking, which are the answers
+    createResultColors();
+    console.log(resultColors)
+}
+
+
+//Start a new game
+start();
